@@ -20,15 +20,13 @@ import android.content.Context;
 import android.content.SearchRecentSuggestionsProvider;
 import android.provider.SearchRecentSuggestions;
 
-import org.transdroid.BuildConfig;
-
 /**
  * Provides search suggestions by simply returning previous user entries.
  * @author Eric Kok
  */
 public class SearchHistoryProvider extends SearchRecentSuggestionsProvider {
 
-	public final static String AUTHORITY = BuildConfig.PACKAGE_NAME + ".search.SearchHistoryProvider";
+	public final static String AUTHORITY = /*BuildConfig.PACKAGE_NAME +*/ ".search.SearchHistoryProvider";
 	public final static int MODE = DATABASE_MODE_QUERIES;
 
 	public SearchHistoryProvider() {

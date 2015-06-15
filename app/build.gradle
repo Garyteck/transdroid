@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
+/*
 apply from: '../signing.gradle'
+*/
 
 android {
     compileSdkVersion 19
@@ -12,19 +14,22 @@ android {
         versionCode 217
         versionName '2.3.0'
     }
-    signingConfigs {
+   /* signingConfigs {
         release {
             storeFile STORE_FILE
             storePassword STORE_PASSWORD
             keyAlias KEY_ALIAS
             keyPassword KEY_PASSWORD
         }
-    }
+    }*/
     buildTypes {
         release {
-            runProguard false
+            minifyEnabled false
+/*
             signingConfig signingConfigs.release
+*/
         }
+
     }
     productFlavors {
         full {
@@ -48,14 +53,14 @@ dependencies {
     compile 'com.j256.ormlite:ormlite-android:4.48'
     compile 'com.github.chrisbanes.actionbarpulltorefresh:library:0.8'
     compile 'de.keyboardsurfer.android.widget:crouton:1.8.+'
-    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.+'
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.3'
     compile 'com.android.support:support-annotations:20.0.0'
     apt "org.androidannotations:androidannotations:3.1"
 }
 
 apt {
     arguments {
-        androidManifestFile variant.processResources.manifestFile
+        androidManifestFile variant.outputs[0].processResources.manifestFile
         resourcePackageName 'org.transdroid'
         //logLevel 'INFO'
         //logFile '/Users/erickok/Dev/transdroid/transdroid/app/build/aa-log.txt'
